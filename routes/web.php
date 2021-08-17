@@ -85,4 +85,10 @@ Route::middleware('auth')->group(function() {
     Route::get('chart-page', [PageController::class, 'chart'])->name('chart');
     Route::get('slider-page', [PageController::class, 'slider'])->name('slider');
     Route::get('image-zoom-page', [PageController::class, 'imageZoom'])->name('image-zoom');
+
+
+    Route::get('induzido-page', [PageController::class, 'validation'])->name('induzido');
+    Route::get('rotor-page', [PageController::class, 'validation'])->name('rotor');
+    Route::get('estator-page', [PageController::class, 'validation'])->name('estator');
+    Route::get('bobina-page', [PageController::class, 'validation'])->name('bobina');
 });

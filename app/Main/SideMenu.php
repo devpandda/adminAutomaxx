@@ -13,6 +13,44 @@ class SideMenu
     public static function menu()
     {
         return [
+            'dashboard1' => [
+                'icon' => 'home',
+                'title' => 'Meu Menu',
+                'sub_menu' => [
+                    'induzidos' => [
+                        'icon' => '',
+                        'route_name' => 'induzido',
+                        'params' => [
+                            'layout' => 'side-menu',
+                        ],
+                        'title' => 'Induzidos'
+                    ],
+                    'rotor' => [
+                        'icon' => '',
+                        'route_name' => 'rotor',
+                        'params' => [
+                            'layout' => 'side-menu',
+                        ],
+                        'title' => 'Rotores'
+                    ],
+                    'estator' => [
+                        'icon' => '',
+                        'route_name' => 'estator',
+                        'params' => [
+                            'layout' => 'side-menu',
+                        ],
+                        'title' => 'Estatores'
+                    ],
+                    'bobinas' => [
+                        'icon' => '',
+                        'route_name' => 'bobina',
+                        'params' => [
+                            'layout' => 'side-menu',
+                        ],
+                        'title' => 'Bobinas'
+                    ]
+                ]
+            ],
             'dashboard' => [
                 'icon' => 'home',
                 'title' => 'Dashboard',
