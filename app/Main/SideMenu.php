@@ -125,6 +125,44 @@ class SideMenu
                 'icon' => 'home',
                 'title' => 'Aplicacao',
                 'sub_menu' => [
+                    'linhas' => [
+                        'icon' => '',
+                        'route_name' => 'linhas.index',
+                        'params' => [
+                            'layout' => 'side-menu',
+                        ],
+                        'title' => 'Linhas'
+                    ],
+                    'rotor' => [
+                        'icon' => '',
+                        'route_name' => 'rotor',
+                        'params' => [
+                            'layout' => 'side-menu',
+                        ],
+                        'title' => 'Montadora'
+                    ],
+                    'estator' => [
+                        'icon' => '',
+                        'route_name' => 'estator',
+                        'params' => [
+                            'layout' => 'side-menu',
+                        ],
+                        'title' => 'Modelos'
+                    ],
+                    'bobinas' => [
+                        'icon' => '',
+                        'route_name' => 'bobina',
+                        'params' => [
+                            'layout' => 'side-menu',
+                        ],
+                        'title' => 'Relacionamento'
+                    ]
+                ]
+            ],
+            'versoes' => [
+                'icon' => 'home',
+                'title' => 'Versoes',
+                'sub_menu' => [
                     'induzidos' => [
                         'icon' => '',
                         'route_name' => 'induzido',
@@ -158,7 +196,16 @@ class SideMenu
                         'title' => 'Relacionamento'
                     ]
                 ]
+            ],
+            'configuracao' => [
+                'icon' => 'file-text',
+                'route_name' => 'post',
+                'params' => [
+                    'layout' => 'side-menu'
+                ],
+                'title' => 'Configuracoes'
             ],'devider',
+
             'dashboard' => [
                 'icon' => 'home',
                 'title' => 'Dashboard',

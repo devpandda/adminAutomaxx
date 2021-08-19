@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\DarkModeController;
+use App\Http\Controllers\LinhaController;
+use App\Models\Linha;
 
 /*
 |--------------------------------------------------------------------------
@@ -91,4 +93,9 @@ Route::middleware('auth')->group(function() {
     Route::get('rotor-page', [PageController::class, 'validation'])->name('rotor');
     Route::get('estator-page', [PageController::class, 'validation'])->name('estator');
     Route::get('bobina-page', [PageController::class, 'validation'])->name('bobina');
+
+
+    Route::post('/linhas', [LinhaController::class, 'store'])->name('linhas.store');
+    Route::get('/linhas/create', [LinhaController::class, 'create'])->name('linhas.create');
+    Route::get('/linhas', [LinhaController::class, 'index'])->name('linhas.index');
 });
