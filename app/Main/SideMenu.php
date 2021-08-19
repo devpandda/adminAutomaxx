@@ -50,7 +50,7 @@ class SideMenu
                         'title' => 'Bobinas'
                     ]
                 ]
-            ],
+            ],'devider',
             'dashboard' => [
                 'icon' => 'home',
                 'title' => 'Dashboard',
