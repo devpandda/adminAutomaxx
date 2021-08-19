@@ -13,10 +13,18 @@ class SideMenu
     public static function menu()
     {
         return [
-            'dashboard1' => [
+            'Produtos' => [
                 'icon' => 'home',
-                'title' => 'Meu Menu',
+                'title' => 'Produtos',
                 'sub_menu' => [
+                    'allProdutos' => [
+                        'icon' => '',
+                        'route_name' => 'induzido',
+                        'params' => [
+                            'layout' => 'side-menu',
+                        ],
+                        'title' => 'Todos Produtos'
+                    ],
                     'induzidos' => [
                         'icon' => '',
                         'route_name' => 'induzido',
@@ -48,6 +56,106 @@ class SideMenu
                             'layout' => 'side-menu',
                         ],
                         'title' => 'Bobinas'
+                    ]
+                ]
+            ],
+            'Atributos' => [
+                'icon' => 'home',
+                'title' => 'Categorias',
+                'sub_menu' => [
+                    'induzidos' => [
+                        'icon' => '',
+                        'route_name' => 'induzido',
+                        'params' => [
+                            'layout' => 'side-menu',
+                        ],
+                        'title' => 'Categorias'
+                    ],
+                    'rotor' => [
+                        'icon' => '',
+                        'route_name' => 'rotor',
+                        'params' => [
+                            'layout' => 'side-menu',
+                        ],
+                        'title' => 'Atributos'
+                    ],
+                    
+                    'bobinas' => [
+                        'icon' => '',
+                        'route_name' => 'bobina',
+                        'params' => [
+                            'layout' => 'side-menu',
+                        ],
+                        'title' => 'Relacionamentos'
+                    ]
+                ]
+            ],
+            'Equivalencia' => [
+                'icon' => 'home',
+                'title' => 'Equivalencia',
+                'sub_menu' => [
+                    'induzidos' => [
+                        'icon' => '',
+                        'route_name' => 'induzido',
+                        'params' => [
+                            'layout' => 'side-menu',
+                        ],
+                        'title' => 'Fabricantes'
+                    ],
+                    'rotor' => [
+                        'icon' => '',
+                        'route_name' => 'rotor',
+                        'params' => [
+                            'layout' => 'side-menu',
+                        ],
+                        'title' => 'Equivalencia'
+                    ],
+                    
+                    'bobinas' => [
+                        'icon' => '',
+                        'route_name' => 'bobina',
+                        'params' => [
+                            'layout' => 'side-menu',
+                        ],
+                        'title' => 'Relacionamentos'
+                    ]
+                ]
+            ],
+            'Aplicacao' => [
+                'icon' => 'home',
+                'title' => 'Aplicacao',
+                'sub_menu' => [
+                    'induzidos' => [
+                        'icon' => '',
+                        'route_name' => 'induzido',
+                        'params' => [
+                            'layout' => 'side-menu',
+                        ],
+                        'title' => 'Linhas'
+                    ],
+                    'rotor' => [
+                        'icon' => '',
+                        'route_name' => 'rotor',
+                        'params' => [
+                            'layout' => 'side-menu',
+                        ],
+                        'title' => 'Montadora'
+                    ],
+                    'estator' => [
+                        'icon' => '',
+                        'route_name' => 'estator',
+                        'params' => [
+                            'layout' => 'side-menu',
+                        ],
+                        'title' => 'Modelos'
+                    ],
+                    'bobinas' => [
+                        'icon' => '',
+                        'route_name' => 'bobina',
+                        'params' => [
+                            'layout' => 'side-menu',
+                        ],
+                        'title' => 'Relacionamento'
                     ]
                 ]
             ],'devider',
