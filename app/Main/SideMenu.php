@@ -121,6 +121,13 @@ class SideMenu
                     ]
                 ]
             ],
+
+
+
+
+           
+
+
             'Aplicacao' => [
                 'icon' => 'home',
                 'title' => 'Aplicacao',

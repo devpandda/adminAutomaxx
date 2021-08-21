@@ -4,8 +4,38 @@
     <title>Linhas de Modelos de Aplicação</title>
 @endsection
 
+
+
+
+
+
+
+                                    
+                                       
+                                    
+                                
+
 @section('subcontent')
+
+
+   
+        
+       
+       
+        
+   
+    
+
+
     <h2 class="intro-y text-lg font-medium mt-10">Controle de Linhas de Aplicação</h2>
+    @if (session('message'))
+    <div class="alert alert-success alert-dismissible show flex items-center mb-2" role="alert">
+        <i data-feather="alert-triangle" class="w-6 h-6 mr-2"></i> {{ session('message')}} 
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            <i data-feather="x" class="w-4 h-4"></i>
+        </button>
+    </div>
+    @endif     
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
             <a href="{{ route('linhas.create')  }}"><button class="btn btn-primary shadow-md mr-2" >Adicionar nova Linha</button></a>
@@ -26,7 +56,8 @@
                     </div>
                 </div>
             </div>
-            <div class="hidden md:block mx-auto text-gray-600">Mostrando 1 para 10 de 150 registros</div>
+            
+            <div class="hidden md:block mx-auto text-gray-600">Mostrando 1 para 10 de {{ count($linhas) }} registros</div>
             <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
                 <div class="w-56 relative text-gray-700 dark:text-gray-300">
                     <input type="text" class="form-control w-56 box pr-10 placeholder-theme-13" placeholder="Search...">
@@ -34,6 +65,7 @@
                 </div>
             </div>
         </div>
+        
         <!-- BEGIN: Data List -->
         <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
             <table class="table table-report -mt-2">
@@ -47,6 +79,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    
 
                     @foreach ($linhas as $linha)
 
@@ -61,10 +94,10 @@
                         
                         <td class="table-report__action w-56">
                             <div class="flex justify-center items-center">
-                                <a class="flex items-center mr-3" href="javascript:;">
-                                    <i data-feather="check-square" class="w-4 h-4 mr-1"></i> Edit
+                                <a class="flex items-center mr-3" href="{{ route('linhas.edit', $linha->id) }}">
+                                    <i data-feather="check-square" class="w-4 h-4 mr-1"></i> Editar
                                 </a>
-                                <a class="flex items-center text-theme-6" href="javascript:;" data-toggle="modal" data-target="#delete-confirmation-modal">
+                                <a class="flex items-center text-theme-6" href="javascript:;"  data-toggle="modal" data-target="#delete-confirmation-modal{{ $linha->id }}">
                                     <i data-feather="trash-2" class="w-4 h-4 mr-1"></i> Delete
                                 </a>
                             </div>
@@ -129,23 +162,53 @@
         </div>
         <!-- END: Pagination -->
     </div>
-    <!-- BEGIN: Delete Confirmation Modal -->
-    <div id="delete-confirmation-modal" class="modal" tabindex="-1" aria-hidden="true">
+
+
+
+    @foreach ($linhas as $linha)
+
+
+
+
+    <div id="delete-confirmation-modal{{ $linha->id }}" class="modal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body p-0">
                     <div class="p-5 text-center">
                         <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
-                        <div class="text-3xl mt-5">Excluir Registro?</div>
+                      
+                        
+                        <div class="text-3xl mt-5">Excluir Registro: {{ $linha->nome }} ?</div>
                         <div class="text-gray-600 mt-2">Você tem certeza que deseja excluir o registro de linha? <br>Este processo não pode ser desfeito.</div>
                     </div>
-                    <div class="px-5 pb-8 text-center">
-                        <button type="button" data-dismiss="modal" class="btn btn-outline-secondary w-24 mr-1">Cancelar</button>
-                        <button type="button" class="btn btn-danger w-24">Deletar</button>
-                    </div>
+                    
+                        
+
+                        <form action="{{ route('linhas.destroy', $linha->id) }}" method="post">
+                            <div class="px-5 pb-8 text-center">
+                                @csrf
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="button" data-dismiss="modal" class="btn btn-outline-secondary w-24 mr-1">Cancelar</button>
+                                <button type="submit" class="btn btn-danger w-24">Deletar</button>
+                            </div>
+                        </form>
+                   
                 </div>
             </div>
         </div>
     </div>
-    <!-- END: Delete Confirmation Modal -->
+
+
+
+
+
+                        
+                    @endforeach
+
+
+
+                
+
+               
+   
 @endsection

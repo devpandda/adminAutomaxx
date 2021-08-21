@@ -15,21 +15,35 @@
                 @csrf
             <div class="intro-y box p-5">
                 <div>
+                   
+                    @if ($errors->any())
+                    <label for="crud-form-1" class="form-label text-theme-6">Nome da Linha</label>
+                    <input id="crud-form-1 nome" name="nome" type="text" class="form-control w-full border-theme-6" placeholder="Nome da Linha" value="{{  old('nome')  }}">
+                    <div class="text-theme-6 mt-2">O Nome não pode ser vazio ou menor que 3 caracteres</div>  
+                    @else
                     <label for="crud-form-1" class="form-label">Nome da Linha</label>
-                    <input id="crud-form-1" name="nome" type="text" class="form-control w-full" placeholder="Nome da Linha">
+                    <input id="crud-form-1 nome" name="nome" type="text" class="form-control w-full" placeholder="Nome da Linha" value="{{  old('nome')  }}"> 
+                    @endif
+                   
+                    
                 </div>
                
                 
                 
-               
+           
                 <div class="mt-3">
                     <label>Descrição</label>
                     <div class="mt-2">
-                        <div data-simple-toolbar="true" class="editor" name="descricao">
-                            <textarea name="descricao"> of the editor.</textarea>
-                        </div>
+                        <textarea name="descricao" class="editor" data-simple-toolbar="true" id="descricao">
+                            {{  old('descricao');  }}
+                        </textarea>
                     </div>
                 </div>
+               
+
+
+
+
                 <div class="text-right mt-5">
                     <button type="button" class="btn btn-outline-secondary w-24 mr-1">Cancelar</button>
                     <button type="submit" class="btn btn-primary w-24">Salvar</button>

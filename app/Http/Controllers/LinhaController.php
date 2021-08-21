@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUpdateLinha;
 use App\Models\Linha;
 use Illuminate\Http\Request;
 
@@ -36,7 +37,7 @@ class LinhaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUpdateLinha $request)
     {
        
 
@@ -62,9 +63,15 @@ class LinhaController extends Controller
      * @param  \App\Models\Linha  $linha
      * @return \Illuminate\Http\Response
      */
-    public function edit(Linha $linha)
+    public function edit($id)
     {
-        //
+        $linha = Linha::find($id);
+
+        if(!$linha){
+            return redirect()->route('linhas.index');
+        }
+
+        return view('sis/linhasEdit', compact('linha'));
     }
 
     /**
@@ -74,9 +81,17 @@ class LinhaController extends Controller
      * @param  \App\Models\Linha  $linha
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Linha $linha)
+    public function update(StoreUpdateLinha $request, $id)
     {
-        //
+        ;
+
+        if(!$linha = Linha::find($id)){
+            return redirect()->route('linhas.index');
+        }
+
+        $linha->update($request->all());
+
+       return redirect()->route('linhas.index')->with('message', 'editado com sucesso');
     }
 
     /**
@@ -85,8 +100,24 @@ class LinhaController extends Controller
      * @param  \App\Models\Linha  $linha
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Linha $linha)
+    public function destroy($id)
     {
-        //
+
+        
+        if(!$linha = Linha::find($id)){
+
+            return redirect()
+            ->route('linhas.index')
+            ->with('message', 'id nao encontrado');
+
+        }
+
+
+
+        $linha->delete();
+        return redirect()
+        ->route('linhas.index')
+        ->with('message', 'Registro excluido com sucesso');
+       
     }
 }
