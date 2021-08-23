@@ -16,7 +16,7 @@ class LinhaController extends Controller
     public function index()
     {
 
-        $linhas = Linha::get();
+        $linhas = Linha::paginate(10);
         
         return view('sis/linhas', compact('linhas'));
     }
@@ -119,5 +119,17 @@ class LinhaController extends Controller
         ->route('linhas.index')
         ->with('message', 'Registro excluido com sucesso');
        
+    }
+
+
+    public function search(Request $request){
+
+        $filters = $request->except('_token');
+
+        $linhas = Linha::where('nome', 'LIKE', "%{$request->search}%")
+        ->orWhere('descricao', 'LIKE', "%{$request->search}%")
+        ->paginate(10);
+
+        return view('sis/linhas', compact('linhas','filters'));
     }
 }

@@ -94,10 +94,11 @@ Route::middleware('auth')->group(function() {
     Route::get('estator-page', [PageController::class, 'validation'])->name('estator');
     Route::get('bobina-page', [PageController::class, 'validation'])->name('bobina');
 
+    Route::any('/linhas/search', [LinhaController::class, 'search'])->name('linhas.search');
+    Route::get('/linhas/create', [LinhaController::class, 'create'])->name('linhas.create');
     Route::put('/linhas/{id}', [LinhaController::class, 'update'])->name('linhas.update');
     Route::get('/linhas/edit/{id}',[LinhaController::class, 'edit'])->name('linhas.edit');
     Route::delete('/linhas/{id}', [LinhaController::class, 'destroy'])->name('linhas.destroy');
     Route::post('/linhas', [LinhaController::class, 'store'])->name('linhas.store');
-    Route::get('/linhas/create', [LinhaController::class, 'create'])->name('linhas.create');
     Route::get('/linhas', [LinhaController::class, 'index'])->name('linhas.index');
 });
