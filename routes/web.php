@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AtributosController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
@@ -120,6 +121,17 @@ Route::middleware('auth')->group(function() {
     Route::delete('/marcas/{id}', [MarcaController::class, 'destroy'])->name('marcas.destroy');
     Route::post('/marcas', [MarcaController::class, 'store'])->name('marcas.store');
     Route::get('/marcas',[MarcaController::class, 'index'])->name('marcas.index');
+
+
+
+    Route::any('/atributos/search', [AtributosController::class, 'search'])->name('atributos.search');
+    Route::get('/atributos/create', [AtributosController::class, 'create'])->name('atributos.create');
+    Route::put('/atributos/{id}', [AtributosController::class, 'update'])->name('atributos.update');
+    Route::get('atributos/edit/{id}', [AtributosController::class, 'edit'])->name('atributos.edit');
+    Route::delete('/atributos/{id}', [AtributosController::class, 'destroy'])->name('atributos.destroy');
+    Route::post('/atributos', [AtributosController::class, 'store'])->name('atributos.store');
+    Route::get('/atributos', [AtributosController::class, 'index'])->name('atributos.index');
+
 
 
 

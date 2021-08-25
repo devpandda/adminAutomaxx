@@ -71,9 +71,9 @@ class SideMenu
                         ],
                         'title' => 'Categorias'
                     ],
-                    'rotor' => [
+                    'atributos' => [
                         'icon' => '',
-                        'route_name' => 'rotor',
+                        'route_name' => 'atributos.index',
                         'params' => [
                             'layout' => 'side-menu',
                         ],
