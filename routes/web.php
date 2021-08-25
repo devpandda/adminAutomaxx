@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\DarkModeController;
 use App\Http\Controllers\LinhaController;
+use App\Http\Controllers\MarcaController;
 use App\Http\Controllers\MontadoraController;
 use App\Models\Linha;
 
@@ -111,4 +112,16 @@ Route::middleware('auth')->group(function() {
     Route::delete('/montadoras/{id}', [MontadoraController::class, 'destroy'])->name('montadoras.destroy');
     Route::post('/montadoras', [MontadoraController::class, 'store'])->name('montadoras.store');
     Route::get('/montadoras', [MontadoraController::class, 'index'])->name('montadoras.index');
+
+    Route::any('/marcas/search', [MarcaController::class, 'search'])->name('marcas.search');
+    Route::get('/marcas/create', [MarcaController::class, 'create'])->name('marcas.create');
+    Route::put('/marcas/{id}', [MarcaController::class, 'update'])->name('marcas.update');
+    Route::get('/marcas/edit/{id}', [MarcaController::class, 'edit'])->name('marcas.edit');
+    Route::delete('/marcas/{id}', [MarcaController::class, 'destroy'])->name('marcas.destroy');
+    Route::post('/marcas', [MarcaController::class, 'store'])->name('marcas.store');
+    Route::get('/marcas',[MarcaController::class, 'index'])->name('marcas.index');
+
+
+
+
 });

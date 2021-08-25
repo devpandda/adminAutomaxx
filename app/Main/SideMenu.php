@@ -94,9 +94,9 @@ class SideMenu
                 'icon' => 'home',
                 'title' => 'Equivalencia',
                 'sub_menu' => [
-                    'induzidos' => [
+                    'fabricantes' => [
                         'icon' => '',
-                        'route_name' => 'induzido',
+                        'route_name' => 'marcas.index',
                         'params' => [
                             'layout' => 'side-menu',
                         ],
