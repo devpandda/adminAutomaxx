@@ -140,9 +140,9 @@ class SideMenu
                         ],
                         'title' => 'Linhas'
                     ],
-                    'rotor' => [
+                    'montadoras' => [
                         'icon' => '',
-                        'route_name' => 'rotor',
+                        'route_name' => 'montadoras.index',
                         'params' => [
                             'layout' => 'side-menu',
                         ],

@@ -83,7 +83,7 @@ class LinhaController extends Controller
      */
     public function update(StoreUpdateLinha $request, $id)
     {
-        ;
+        
 
         if(!$linha = Linha::find($id)){
             return redirect()->route('linhas.index');

@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\DarkModeController;
 use App\Http\Controllers\LinhaController;
+use App\Http\Controllers\MontadoraController;
 use App\Models\Linha;
 
 /*
@@ -101,4 +102,13 @@ Route::middleware('auth')->group(function() {
     Route::delete('/linhas/{id}', [LinhaController::class, 'destroy'])->name('linhas.destroy');
     Route::post('/linhas', [LinhaController::class, 'store'])->name('linhas.store');
     Route::get('/linhas', [LinhaController::class, 'index'])->name('linhas.index');
+
+
+    Route::any('/montadoras/search', [MontadoraController::class, 'search'])->name('montadoras.search');
+    Route::get('/montadoras/create', [MontadoraController::class, 'create'])->name('montadoras.create');
+    Route::put('montadoras/{id}', [MontadoraController::class, 'update'])->name('montadoras.update');
+    Route::get('/montadoras/edit/{id}', [MontadoraController::class, 'edit'])->name('montadoras.edit');
+    Route::delete('/montadoras/{id}', [MontadoraController::class, 'destroy'])->name('montadoras.destroy');
+    Route::post('/montadoras', [MontadoraController::class, 'store'])->name('montadoras.store');
+    Route::get('/montadoras', [MontadoraController::class, 'index'])->name('montadoras.index');
 });
