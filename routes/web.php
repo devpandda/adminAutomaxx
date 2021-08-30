@@ -7,6 +7,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\DarkModeController;
 use App\Http\Controllers\LinhaController;
 use App\Http\Controllers\MarcaController;
+use App\Http\Controllers\ModeloController;
 use App\Http\Controllers\MontadoraController;
 use App\Models\Linha;
 
@@ -133,7 +134,13 @@ Route::middleware('auth')->group(function() {
     Route::get('/atributos', [AtributosController::class, 'index'])->name('atributos.index');
 
 
-
+    Route::get('/modelos/create', [ModeloController::class, 'create'])->name('modelos.create');
+    Route::get('/modelos/{id}', [ModeloController::class, 'show'])->name('modelos.show');
+    Route::put('/modelos/{id}', [ModeloController::class, 'update'])->name('modelos.update');
+    Route::get('/modelos/edit/{id}', [ModeloController::class, 'edit'])->name('modelos.edit');
+    Route::delete('/modelos/{id}', [ModeloController::class, 'destroy'])->name('modelos.destroy');
+    Route::post('/modelos', [ModeloController::class, 'store'])->name('modelos.store');
+    Route::get('/modelos', [ModeloController::class, 'index'])->name('modelos.index');
 
 
 });

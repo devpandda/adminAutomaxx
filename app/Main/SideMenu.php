@@ -148,9 +148,9 @@ class SideMenu
                         ],
                         'title' => 'Montadora'
                     ],
-                    'estator' => [
+                    'modelos' => [
                         'icon' => '',
-                        'route_name' => 'estator',
+                        'route_name' => 'modelos.index',
                         'params' => [
                             'layout' => 'side-menu',
                         ],
