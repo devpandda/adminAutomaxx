@@ -6,6 +6,7 @@ use App\Http\Requests\StoreUpdateModelo;
 use App\Models\Linha;
 use App\Models\Modelo;
 use App\Models\Montadora;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 class ModeloController extends Controller
@@ -146,6 +147,22 @@ class ModeloController extends Controller
        return redirect()
        ->route('modelos.index')
        ->with('message', 'Registro excluido com sucesso');
-    } 
+    }
+    
+    
+    public function search(Request $request){
+
+
+        $filters = $request->except('_token');
+
+        $modelos = Modelo::where('nome', 'LIKE', "%{$request->search}%")
+            ->orWhere('descricao', 'LIKE', "%{$request->search}%")
+            ->orWhere('anoIni', 'LIKE', "%{$request->search}%")
+            ->orWhere('anoFim', 'LIKE', "%{$request->search}%")
+            ->paginate(10);
+
+
+        return view('sis.modelos', compact('modelos','filters'));
+    }
 
 }
