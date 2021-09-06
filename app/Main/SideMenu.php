@@ -19,7 +19,7 @@ class SideMenu
                 'sub_menu' => [
                     'allProdutos' => [
                         'icon' => '',
-                        'route_name' => 'induzido',
+                        'route_name' => 'produtos.index',
                         'params' => [
                             'layout' => 'side-menu',
                         ],
@@ -59,13 +59,13 @@ class SideMenu
                     ]
                 ]
             ],
-            'Atributos' => [
+            'Categorias' => [
                 'icon' => 'home',
                 'title' => 'Categorias',
                 'sub_menu' => [
                     'induzidos' => [
                         'icon' => '',
-                        'route_name' => 'induzido',
+                        'route_name' => 'categorias.index',
                         'params' => [
                             'layout' => 'side-menu',
                         ],

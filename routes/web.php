@@ -3,13 +3,16 @@
 use App\Http\Controllers\AtributosController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\DarkModeController;
 use App\Http\Controllers\LinhaController;
 use App\Http\Controllers\MarcaController;
 use App\Http\Controllers\ModeloController;
 use App\Http\Controllers\MontadoraController;
+use App\Http\Controllers\ProdutoController;
 use App\Models\Linha;
+use App\Models\Produto;
 
 /*
 |--------------------------------------------------------------------------
@@ -142,5 +145,16 @@ Route::middleware('auth')->group(function() {
     Route::post('/modelos', [ModeloController::class, 'store'])->name('modelos.store');
     Route::get('/modelos', [ModeloController::class, 'index'])->name('modelos.index');
 
+
+    Route::get('/produtos', [ProdutoController::class, 'index'])->name('produtos.index');
+
+
+    Route::any('/categorias/search', [CategoriaController::class, 'search'])->name('categorias.search');
+    Route::get('/categorias/create',[CategoriaController::class, 'create'])->name('categorias.create');
+    Route::put('/categorias/{id}', [CategoriaController::class, 'update'])->name('categorias.update');
+    Route::get('/categorias/edit/{id}', [CategoriaController::class, 'edit'])->name('categorias.edit');
+    Route::delete('/categorias/{id}', [CategoriaController::class, 'destroy'])->name('categorias.destroy');
+    Route::post('/categorias', [CategoriaController::class, 'store'])->name('categorias.store');
+    Route::get('/categorias',[CategoriaController::class, 'index'])->name('categorias.index');
 
 });
