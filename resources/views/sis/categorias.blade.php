@@ -99,7 +99,9 @@
                     </td>
                     <td class="w-40">
                         <div class="flex items-center justify-center">
-                           
+                            <a class="flex items-center mr-3" href="{{ route('categorias.show', $categoria->id) }}">
+                                <i data-feather="star" class="w-4 h-4 mr-1"></i> Atributos
+                            </a>
                         </div>
                     </td>
 

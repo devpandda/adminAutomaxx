@@ -14,4 +14,7 @@ class Categoria extends Model
     protected $fillable = ['nome','descricao'];
 
 
+    public function atributos(){
+        return $this->belongsToMany(Atributos::class,'categorias_atributos','idCategoria','idAtributo');
+    }
 }

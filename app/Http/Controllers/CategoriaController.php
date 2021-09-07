@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUpdateCategoria;
+use App\Models\Atributos;
 use App\Models\Categoria;
 use App\Models\Modelo;
 use Illuminate\Http\Request;
@@ -51,9 +52,22 @@ class CategoriaController extends Controller
      * @param  \App\Models\Categoria  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function show(Categoria $categoria)
+    public function show($id)
     {
-        //
+        $categoria = Categoria::find($id);
+
+        if(!$categoria){
+            return redirect()
+            ->route('categorias.index')
+            ->with('message', 'erro');
+        }
+
+        $allatributos = Atributos::get();
+
+        $atributos = $categoria->atributos()->get();
+ 
+       
+        return view('sis.categoriasShow', compact('categoria', 'allatributos', 'atributos'));
     }
 
     /**
@@ -71,6 +85,7 @@ class CategoriaController extends Controller
            ->route('categorias.index');
        }
 
+      
 
         return view('sis.categoriasEdit', compact('categoria'));
     }
@@ -97,6 +112,41 @@ class CategoriaController extends Controller
         ->with('message', 'Registro editado com sucesso');
     }
 
+
+     /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Categoria  $categoria
+     * @return \Illuminate\Http\Response
+     */
+    public function updateatributo(Request $request, $id)
+    {
+        
+        if(!$categoria = Categoria::find($id)){
+            return redirect()
+            ->route('categorias.index');
+        }
+
+        $categoria->atributos()->attach($request->idAtributo);
+
+        
+
+        
+        $allatributos = Atributos::get();
+
+        $atributos = $categoria->atributos()->get();
+ 
+       
+        return view('sis.categoriasShow', compact('categoria', 'allatributos', 'atributos'));
+
+
+
+
+
+
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -117,6 +167,33 @@ class CategoriaController extends Controller
         return redirect()
         ->route('categorias.index')
         ->with('message', 'Registro excluido com sucesso');
+
+    }
+
+
+
+    public function destroyatributo($id, $idatributo)
+    {
+
+        
+        if(!$categoria = Categoria::find($id)){
+
+            return redirect()
+            ->route('categorias.index')
+            ->with('message', 'Id não encontrado');
+        }
+
+        $categoria->atributos()->detach($idatributo);
+
+        
+
+        
+        $allatributos = Atributos::get();
+
+        $atributos = $categoria->atributos()->get();
+ 
+       
+        return view('sis.categoriasShow', compact('categoria', 'allatributos', 'atributos'));
 
     }
 

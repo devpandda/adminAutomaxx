@@ -151,10 +151,13 @@ Route::middleware('auth')->group(function() {
 
     Route::any('/categorias/search', [CategoriaController::class, 'search'])->name('categorias.search');
     Route::get('/categorias/create',[CategoriaController::class, 'create'])->name('categorias.create');
+    Route::get('/categorias/{id}', [CategoriaController::class, 'show'])->name('categorias.show');
     Route::put('/categorias/{id}', [CategoriaController::class, 'update'])->name('categorias.update');
     Route::get('/categorias/edit/{id}', [CategoriaController::class, 'edit'])->name('categorias.edit');
     Route::delete('/categorias/{id}', [CategoriaController::class, 'destroy'])->name('categorias.destroy');
     Route::post('/categorias', [CategoriaController::class, 'store'])->name('categorias.store');
     Route::get('/categorias',[CategoriaController::class, 'index'])->name('categorias.index');
+    Route::delete('/categorias-atributo/{id}/{idatributo}', [CategoriaController::class, 'destroyatributo'])->name('categorias.destroy.atributo');
+    Route::put('/categoria-atributo/{id}', [CategoriaController::class, 'updateatributo'])->name('categorias.update.atributo');
 
 });
