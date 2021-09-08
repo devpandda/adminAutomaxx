@@ -12,7 +12,7 @@
         <div class="intro-y col-span-12 lg:col-span-6">
             <!-- BEGIN: Input -->
             <div class="intro-y box">
-                <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
+                <div class="flex flex-col sm:flex-row items-center p-8 border-b border-gray-200 dark:border-dark-5">
                     <h2 class="font-medium text-base mr-auto">Input</h2>
                     <div class="form-check w-full sm:w-auto sm:ml-auto mt-3 sm:mt-0">
                         <label class="form-check-label ml-0 sm:ml-2" for="show-example-1">Show example code</label>

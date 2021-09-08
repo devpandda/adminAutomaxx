@@ -146,7 +146,14 @@ Route::middleware('auth')->group(function() {
     Route::get('/modelos', [ModeloController::class, 'index'])->name('modelos.index');
 
 
+    Route::any('/produtos/search', [ProdutoController::class, 'search'])->name('produtos.search');
+    Route::get('/produtos/create', [ProdutoController::class, 'create'])->name('produtos.create');
+    Route::delete('/produtos/{id}', [ProdutoController::class, 'destroy'])->name('produtos.destroy');
+    Route::put('/produtos/{id}', [ProdutoController::class, 'update'])->name('produtos.update');
+    Route::get('/produtos/edit/{id}', [ProdutoController::class, 'edit'])->name('produtos.edit');
+    Route::post('/produtos', [ProdutoController::class, 'store'])->name('produtos.store');
     Route::get('/produtos', [ProdutoController::class, 'index'])->name('produtos.index');
+
 
 
     Route::any('/categorias/search', [CategoriaController::class, 'search'])->name('categorias.search');
@@ -157,6 +164,8 @@ Route::middleware('auth')->group(function() {
     Route::delete('/categorias/{id}', [CategoriaController::class, 'destroy'])->name('categorias.destroy');
     Route::post('/categorias', [CategoriaController::class, 'store'])->name('categorias.store');
     Route::get('/categorias',[CategoriaController::class, 'index'])->name('categorias.index');
+
+
     Route::delete('/categorias-atributo/{id}/{idatributo}', [CategoriaController::class, 'destroyatributo'])->name('categorias.destroy.atributo');
     Route::put('/categoria-atributo/{id}', [CategoriaController::class, 'updateatributo'])->name('categorias.update.atributo');
 

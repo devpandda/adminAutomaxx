@@ -17,6 +17,7 @@ class CreateProdutosTable extends Migration
             $table->id();
             $table->string('SKU');
             $table->string('nome');
+            $table->string('descricao');
             $table->string('img');
             $table->string('codOem');
             $table->string('codBarra');
@@ -27,7 +28,7 @@ class CreateProdutosTable extends Migration
             $table->unsignedBigInteger('idCategoria');
             $table->timestamps();
 
-          
+            $table->foreign('idCategoria')->references('id')->on('categorias')->onDelete('cascade');
 
             
         });
